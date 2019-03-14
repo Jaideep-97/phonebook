@@ -1,0 +1,124 @@
+<html>
+  <head>
+    <title>phonebook</title>
+  </head>
+  <style>
+    ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+  }
+
+  li {
+    float: left;
+  }
+
+  li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  .button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-size: 12px;
+    border-radius: 8px;
+  }
+  th, td {
+  text-align: center;
+  padding: 8px;
+}
+
+tr:nth-child(even) {background-color: #f2f2f2;}
+table{
+  width: 100%;
+
+}
+#name,#phone{
+  width: 50%;
+  padding: 15px;
+  font-size: 1.3em;
+}
+
+
+
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+    <ul>
+      <li><a class="active" href="proj1.html">TELEPHONE DIRECTORY</a></li>
+
+    </ul>
+    <br />
+<div id="telephone">
+    <table id="Table" border="1">
+        <tr>
+            <td>NAME</td>
+            <td>PHONE NUMBER</td>
+
+            <td>Delete</td>
+
+        </tr>
+
+    </table>
+</div>
+<div id="TELEPHONE">
+    <br />
+    <div ng-app="">
+    <form>
+        NAME:
+          <br/>
+            <input type="text" id="name" ng-model="name" placeholder="name"/>
+          <br/>
+          <br/>
+        PHONE NUMBER:
+          <br/>
+            <input type="text"  id="phone" ng-model="phone" placeholder="phone number"/>
+
+
+    </form>
+    <br />
+    <h3>Name: {{name}}</h3>
+
+    <h3>Phone number: {{phone}}</h3>
+    <div ng-app="">
+      <input type="button" class="button"  value="ADD" onclick="insRow(document.getElementById('name').value)" />
+
+
+    </div>
+</div>
+<script>
+  function deleteRow(row)
+  {
+      var i=row.parentNode.parentNode.rowIndex;
+      document.getElementById('Table').deleteRow(-1);
+  }
+
+
+  function insRow(text)
+  {
+      var x=document.getElementById('Table').insertRow(1);
+      var c1=x.insertCell(0);
+      var c2=x.insertCell(1);
+      var c3=x.insertCell(2);
+      c1.innerHTML=text;
+      c2.innerHTML=document.getElementById('phone').value;
+      c3.innerHTML="<input type='button' class='button' id='delPOIbutton' value='Delete' onclick='deleteRow(this)'/>";
+  }
+
+
+</script>
+</body>
+</html>
